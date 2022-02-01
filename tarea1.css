@@ -1,81 +1,78 @@
-h3{
-	justify-content: justify;
-	text-align: center
+h3 {
+  justify-content: justify;
+  text-align: center;
 }
 
-h5{
-	justify-content: justify;
-	text-align: center;
+h5 {
+  justify-content: justify;
+  text-align: center;
 }
 
-p{
-	display: flex;
-	justify-content: center;
-	text-align: justify;
-	align-items: center;
+p {
+  display: flex;
+  justify-content: center;
+  text-align: justify;
+  align-items: center;
 }
 
-.flexbox-container{
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	align-items: center;
-	flex-wrap: wrap;
+.flexbox-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.flexbox-item{
-	margin: 5px;
-	border-radius: 20px;
-	background-color: #A9E1F6;
-	min-height: 40px;
-	flex-grow: 1;
-	width: calc(33% - 5px);
+.flexbox-item {
+  margin: 5px;
+  border-radius: 20px;
+  background-color: #a9e1f6;
+  min-height: 40px;
+  flex-grow: 1;
+  width: calc(33% - 5px);
 }
 
-.flexbox-container-1{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	flex-wrap: wrap;
-
+.flexbox-container-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
 }
 
-.flexbox-item-1{
-	width: 500px;
-	margin: 10px;
-	border-radius: 20px;
-	background-color: #94F9B1;
-	min-height: 40px;
-	flex-grow: 1;
+.flexbox-item-1 {
+  width: 500px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: #94f9b1;
+  min-height: 40px;
+  flex-grow: 1;
 }
 
-
-.flexbox-item-2{
-	width: 500px;
-	margin: 10px;
-	border-radius: 20px;
-	background-color: #F9D9E8;
-	min-height: 40px;
-	flex-grow: 1;
-	justify-content: center;
-	text-align: center;
-	align-items: center;
-	display: flex;
+.flexbox-item-2 {
+  width: 500px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: #f9d9e8;
+  min-height: 40px;
+  flex-grow: 1;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: flex;
 }
 
-.flexbox-item-3{
-	width: 400px;
-	margin: 10px;
-	border-radius: 20px;
-	background-color: #F9D9E8;
-	min-height: 40px;
-	flex-grow: 1;
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 250px;
-
+.flexbox-item-3 {
+  width: 400px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: #f9d9e8;
+  min-height: 40px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 250px;
 }
