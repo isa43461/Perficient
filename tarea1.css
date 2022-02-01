@@ -1,81 +1,51 @@
-h3{
-	justify-content: justify;
-	text-align: center
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h5{
-	justify-content: justify;
-	text-align: center;
+h5,
+h3 {
+  text-align: center;
 }
 
-p{
-	display: flex;
-	justify-content: center;
-	text-align: justify;
-	align-items: center;
+.box {
+  border-radius: 10px;
+  min-height: 2.5rem;
+  background-color: #f9d9e8;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.flexbox-container{
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	align-items: center;
-	flex-wrap: wrap;
+.flexbox-container {
+  display: flex;
 }
 
-.flexbox-item{
-	margin: 5px;
-	border-radius: 20px;
-	background-color: #A9E1F6;
-	min-height: 40px;
-	flex-grow: 1;
-	width: calc(33% - 5px);
+.git-container {
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.flexbox-container-1{
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	flex-wrap: wrap;
-
+.git-item {
+  background-color: #c9e2fa;
+  width: 33.3%;
 }
 
-.flexbox-item-1{
-	width: 500px;
-	margin: 10px;
-	border-radius: 20px;
-	background-color: #94F9B1;
-	min-height: 40px;
-	flex-grow: 1;
+.html-container {
+  align-items: center;
+  flex-direction: column;
 }
 
-
-.flexbox-item-2{
-	width: 500px;
-	margin: 10px;
-	border-radius: 20px;
-	background-color: #F9D9E8;
-	min-height: 40px;
-	flex-grow: 1;
-	justify-content: center;
-	text-align: center;
-	align-items: center;
-	display: flex;
+.html-item {
+  background-color: #d1fac9;
+  width: 40%;
 }
 
-.flexbox-item-3{
-	width: 400px;
-	margin: 10px;
-	border-radius: 20px;
-	background-color: #F9D9E8;
-	min-height: 40px;
-	flex-grow: 1;
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 250px;
+.css-container > div {
+  width: 33.3%;
+}
 
+.box.card {
+  flex-direction: column;
+  padding: 2rem;
 }
