@@ -15,6 +15,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 90%;
 }
 
 .flexbox-container {
@@ -28,7 +29,7 @@ h3 {
 
 .git-item {
   background-color: #c9e2fa;
-  width: 33.3%;
+  width: 30%;
 }
 
 .html-container {
@@ -42,10 +43,30 @@ h3 {
 }
 
 .css-container > div {
-  width: 33.3%;
+  flex-wrap: wrap;
 }
 
 .box.card {
   flex-direction: column;
   padding: 2rem;
+  width: 33%;
+}
+
+
+@media screen and (min-width: 780px) and (max-width: 1024px){
+  .git-container, .html-container, .css-container{
+    width: 100%;
+  }
+  .git-item, .html-item{
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 780px){
+  .git-container, .html-container, .css-container{
+    width: 100%;
+  }
+  .git-item, .html-item{
+    width: 100%;
+  }
 }
