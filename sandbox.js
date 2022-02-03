@@ -88,3 +88,83 @@ console.log(result7);
 console.log(ninjas);
 
 console.log(email.includes('@'));
+
+//tutorial 3
+
+
+const names = ['pepe', 'pedro', 'luigi'];
+
+for(let i = 0; i < names.length; i++){
+    console.log('nombre: ', names[i]);
+}
+
+let i = 0;
+let n = names.length;
+while(i < n){
+    console.log(names[i]);
+    i++;
+}
+
+i = 0;
+do{
+    console.log(i);
+    i++;
+} while(i < 0);
+
+
+const psw = 'pass';
+if(psw.length < 4){
+    console.log("sii");
+}
+else if(psw.length == 4){
+    console.log("igual");
+}
+else{
+    console.log("noo");
+}
+
+const scores = [50,10,20,30,40,60,6];
+
+for(let i = 0; i < scores.length; i++){
+    console.log("Your score :" , scores[i]);
+    if(scores[i] == 60){
+        console.log("Has acabado!");
+        break;
+    }
+
+}
+
+
+const grade = 'A';
+switch(grade){
+    case 'A':
+        console.log("Tienes A");
+        break;
+    case 'B':
+        console.log("Tienes B");
+        break;
+    case 'C':
+        console.log("Tienes C");
+        break;
+    case 'D':
+        console.log("Tienes D");
+        break;
+    default:
+        console.log("No es valido");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
