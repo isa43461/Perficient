@@ -207,7 +207,70 @@ const logPerson = (person, index) => {
 }
 people.forEach(logPerson);
 
+//tutorial #5
+
+const blogs = [
+    {tittle: 'hola', likes: 30},
+    {tittle: 'adios', likes: 50}
+];
 
 
+let user = {
+    name: 'crystal',
+    age: 30,
+    email: 'crys@gmail.com',
+    location: 'berlin',
+    blogs: ['hola', 'adios'],
+    login: function(){
+        console.log('The user logged in');
+    },
+    logout: function(){
+        console.log('The user logged out');
+    },
+    logBlogs: function(){
+        console.log(this.blogs);
+        this.blogs.forEach(blog => {
+            console.log(blog);
+        })
+    }
+};
+
+console.log(user);
+console.log(user.name);
+
+user.age = 34;
+console.log(user.age);
+console.log(user['location']);
+
+user['location'] = 'cali';
+console.log(user.location);
+
+user.login();
+user.logout();
+user.logBlogs();
 
 
+console.log(Math);
+console.log(Math.PI);
+console.log(Math.E);
+
+const areaa = 7.7;
+
+console.log(Math.round(areaa));
+console.log(Math.floor(areaa));
+console.log(Math.ceil(areaa));
+
+const random = Math.random();
+
+console.log(random);
+
+
+let scoreOne = 50;
+let scoreTwo = scoreOne;
+
+console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);
+
+const userOne = {name: 'ru', age: 30};
+const userTwo = userOne;
+
+console.log(userOne, userTwo);
