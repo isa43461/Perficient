@@ -154,15 +154,58 @@ switch(grade){
 }
 
 
+//tutorial #4
+
+function greet(){
+    console.log('hello function');
+}
+
+greet();
+
+const speak = function(name){
+    console.log('goood day',name);
+}
+speak('isa');
+
+const calArea = function(radius){
+    return  3.14*radius**2;
+}
+
+const area = calArea(5);
+console.log(area);
+
+
+const calcArea = (radius) =>{
+    return  3.14*radius**2;
+}
+
+const area2 = calcArea(4);
+console.log(area2);
 
 
 
+const bill = function(products, tax){
+    let total = 0;
+    for(let i = 0; i < products.length; i++){
+        total += products[i] + products[i] * tax;
+    }
+    return total;
+}
+
+console.log("answer: ", bill([1,2,49], 0.2));
 
 
+let people = ['mario', 'frer', 'isa'];
+
+people.forEach(function(person){
+    console.log(person);
+});
 
 
-
-
+const logPerson = (person, index) => {
+    console.log(`${index} - hello ${person}`);
+}
+people.forEach(logPerson);
 
 
 
