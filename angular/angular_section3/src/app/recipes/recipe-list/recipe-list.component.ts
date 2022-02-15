@@ -8,7 +8,7 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent implements OnInit {
   recipes : Recipe[] = [
-    new Recipe('A test Recipe', 'This is a simple test', 'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2019/02/cual-es-la-comida-mas-importante.jpg')
+    new Recipe('A test Recipe', 'This is a simple test', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg')
   ];
   constructor() { }
 
