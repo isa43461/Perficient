@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-xs-6">
+        <ul class="list-group">
+            <a class="list-group-item" 
+            style="cursor: pointer;"
+            *ngFor="let product of products"
+            >{{product.name}} , "{{product.desc}}" , ({{product.amount}})
+            <hr>
+            <input [(ngModel)]="ProductAmount" type="number" class="form-control"  *ngIf="product.amount >= ProductAmount" placeholder="Ingrese la cantidad deseada de producto">
+            <br>
+            <button class="btn btn-primary"  *ngIf="ProductAmount >= 1 && product.amount >= ProductAmount" (click)="onCreateAmount()" >Add {{ProductAmount}} Product</button>
+        </a>
+        </ul>
+    </div>
+</div>
