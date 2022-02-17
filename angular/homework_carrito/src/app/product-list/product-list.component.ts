@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Products } from '../shared/products.model';
 
 @Component({
@@ -6,15 +6,20 @@ import { Products } from '../shared/products.model';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
-  ProductAmount = 0;
+export class ProductListComponent{
   products: Products[] = [
-    new Products('Apple','Red Apple' ,5),
+    new Products('Apple','Red Apple', 6),
+    new Products('Tomatoes', 'Fresh Tomatoes', 4)
   ];
+  ProductAmount = [0,0];
 
   constructor() { }
+  
+  @Output() enviar = new EventEmitter<number>()
 
-  ngOnInit(): void {
+  EnviarNumeroProducto(num: number){
+    this.enviar.emit(num)
+    console.log(num);
   }
 
 }
