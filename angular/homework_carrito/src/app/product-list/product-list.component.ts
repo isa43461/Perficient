@@ -19,7 +19,16 @@ export class ProductListComponent{
 
   EnviarNumeroProducto(num: number){
     this.enviar.emit(num)
-    console.log(num);
+  }
+
+  restarProducto(name: string, num: number){
+    let n = this.products.length;
+    for(let i = 0; i < n; i++){
+      if(this.products[i].name === name){
+        this.products[i].amount -= num;
+      }
+    }
+    this.ProductAmount = [0,0];
   }
 
 }

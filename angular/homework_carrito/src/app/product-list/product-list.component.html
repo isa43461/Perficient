@@ -7,10 +7,10 @@
             >{{product.name}} , "{{product.desc}}" , ({{product.amount}})
             <hr>
             <input [(ngModel)]="ProductAmount[i]" type="number" class="form-control"  *ngIf="product.amount > ProductAmount[i]" placeholder="Ingrese la cantidad deseada de producto">
-            <p *ngIf="product.amount == ProductAmount[i] && product.amount != 0">We can't add anymore. ¿Do you want to add {{ProductAmount[i]}} of {{product.name}}?</p>
+            <p *ngIf="product.amount != 0">¿Do you want to add {{ProductAmount[i]}} of {{product.name}}?</p>
             <p *ngIf="product.amount == 0">OUT OF STOCK</p>
             <br>
-            <button class="btn btn-primary"  *ngIf="product.amount >= 1" (click)="EnviarNumeroProducto(ProductAmount[i])">Add {{ProductAmount[i]}} Products</button>
+            <button class="btn btn-primary"  *ngIf="(product.amount >= 1 && ProductAmount[i] >= 0) && ((product.amount - ProductAmount[i]) >= 0)" (click)="[EnviarNumeroProducto(ProductAmount[i]), restarProducto(product.name, ProductAmount[i])]">Add {{ProductAmount[i]}} Products</button>
         </a>
         </ul>
     </div>
