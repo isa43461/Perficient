@@ -7,12 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { DirectoryComponent } from './directory/directory.component';
 import { Routes, RouterModule } from '@angular/router';
 import { rutas } from './app.routes';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DirectoryComponent
+    DirectoryComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

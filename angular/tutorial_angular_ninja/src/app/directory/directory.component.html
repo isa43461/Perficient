@@ -1,8 +1,13 @@
-
-<p [ngClass]="{'blue': true, 'red': false, 'underline' : true}">directory works!</p>
-
-<style>
-    .blue{color: blue;}
-    .red{color: red;}
-    .underline{text-decoration: underline;}
-</style>
+<h2>Ninja Listening</h2>
+<form id="filter">
+    <label>Filter ninjas by name: </label>
+    <input type="text" [(ngModel)]="term">
+</form>
+<ul>
+    <li *ngFor="let ninja of ninjas | filter:term">
+        <div>
+            <h3>{{ninja.name | uppercase}}</h3>
+            <span [ngStyle]="{background: ninja.belt}">{{ninja.belt}}</span>
+        </div>
+    </li>
+</ul>
