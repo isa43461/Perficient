@@ -1,0 +1,17 @@
+<p>{{homeTitle}}</p>
+<ng-content></ng-content>
+<br>
+<input [value]="myString"/>
+<br>
+<input value={{myString}}>
+<button (click)="alertMe('he')">Click me</button>
+<hr>
+<input [(ngModel)] = "ninja.name">
+<input [(ngModel)] = "ninja.belt">
+
+<p>{{ninja.belt}}</p>
+<p>{{ninja.name}}</p>
+<hr>
+<p>{{ninja.name}}</p>
+
+<button (click)="fireYellEvent($event)">Hit me</button>
