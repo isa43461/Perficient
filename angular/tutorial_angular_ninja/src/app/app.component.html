@@ -1,1 +1,8 @@
+<nav>
+    <ul>
+        <li><a [routerLink] ="['/']">Home</a></li>
+        <li><a [routerLink] ="['/directory']">Directory</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>
 <app-home [ninja]="ninja" (onYell)="yell($event)">HOLA</app-home>
