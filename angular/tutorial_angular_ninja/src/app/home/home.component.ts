@@ -1,9 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { LoggingService } from '../logging.service';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers : [LoggingService]
 })
 export class HomeComponent implements OnInit {
   homeTitle = 'Welcome to the homepage....';
@@ -20,8 +23,12 @@ export class HomeComponent implements OnInit {
     alert(val)
   }
 
-  constructor() { }
+  constructor(private logger: LoggingService) { }
 
+  logIt(){
+    this.logger.log();
+  }
+  
   ngOnInit(): void {
   }
 

@@ -1,13 +1,10 @@
 <h2>Ninja Listening</h2>
-<form id="filter">
-    <label>Filter ninjas by name: </label>
-    <input type="text" [(ngModel)]="term">
-</form>
 <ul>
-    <li *ngFor="let ninja of ninjas | filter:term">
+    <li *ngFor="let ninja of ninjas">
         <div>
             <h3>{{ninja.name | uppercase}}</h3>
             <span [ngStyle]="{background: ninja.belt}">{{ninja.belt}}</span>
         </div>
     </li>
 </ul>
+<button (click)="logIt()">Log me</button>

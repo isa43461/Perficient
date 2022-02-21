@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DirectoryComponent } from './directory/directory.component';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { rutas } from './app.routes';
 import { FilterPipe } from './filter.pipe';
 
@@ -14,14 +14,15 @@ import { FilterPipe } from './filter.pipe';
     AppComponent,
     HomeComponent,
     DirectoryComponent,
-    FilterPipe
+    FilterPipe  
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    HttpClientModule,
   ],
-  providers: [],
+  providers:  [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
