@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoggingService } from '../logging.service';
 import { DataService } from '../data.service';
 
+declare var firebase: any;
 @Component({
   selector: 'app-directory',
   templateUrl: './directory.component.html',
@@ -9,7 +10,6 @@ import { DataService } from '../data.service';
   providers : [LoggingService, DataService]
 })
 export class DirectoryComponent implements OnInit {
-
   ninjas = [];
   
   constructor(private logger: LoggingService, private dataService: DataService) { }
@@ -22,6 +22,14 @@ export class DirectoryComponent implements OnInit {
     this.dataService.fetchData().subscribe(
       (data:any) => this.ninjas = data
     );
+
+    this.fbGetData();
+  }
+
+  fbGetData(){
+    firebase.database().ref('/').on('child_added', (snapshot) => {
+      console.log(snapshot.val())
+    })
   }
 
 }
