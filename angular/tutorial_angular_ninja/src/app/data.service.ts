@@ -8,6 +8,6 @@ import { map } from 'rxjs/operators';
 export class DataService {
   constructor(private httpClient: HttpClient) {}
   fetchData(){
-    return this.httpClient.get('ninjas.json').pipe(map((res:Response) => res.json()))
+    return this.httpClient.get('https://nn-angular-isa-default-rtdb.firebaseio.com/.json')
   }
 }
