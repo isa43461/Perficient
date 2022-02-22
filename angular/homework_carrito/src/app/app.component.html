@@ -9,8 +9,10 @@
     <app-header [value] = numeroCarrito></app-header>
     <h2>Carrito de Compras</h2>
     <div class="col-md-12">
-        <app-carrito></app-carrito>
-        <app-product-list (enviar)="recibiRespuesta($event)"></app-product-list>
+        <!---
+        <app-product-list (enviar)="recibiRespuesta($event)" (enviarNombre)="RecibiNombre($event)"></app-product-list> 
+        !--->
     </div>
+    <router-outlet></router-outlet>
 </body>
 </html>

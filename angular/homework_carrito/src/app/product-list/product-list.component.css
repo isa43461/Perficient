@@ -1,0 +1,26 @@
+.flexbox-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+.productlist-container {
+    justify-content: center;
+    align-items: center;
+    }
+
+.product-items{
+    width: 60%;
+}
+
+.btn-secondary{
+    background-color:white;
+    border: 1px solid #89CCEE;
+    float: right;
+}
+.btn-secondary:hover {
+    background-color: #89CCEE; /* Green */
+    color: black;
+}
+
+
+

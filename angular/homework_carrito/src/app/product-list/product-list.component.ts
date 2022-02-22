@@ -8,17 +8,25 @@ import { Products } from '../shared/products.model';
 })
 export class ProductListComponent{
   products: Products[] = [
-    new Products('Apple','Red Apple', 6),
-    new Products('Tomatoes', 'Fresh Tomatoes', 4)
+    new Products('Apple','Red Apple', 6, 'apple'),
+    new Products('Tomatoes', 'Fresh Tomatoes', 4, 'tomatoes'),
+    new Products('Pineapple', 'Sweet Pineapple', 10, 'pineapple'),
+    new Products('Ice Cream', 'Strawberry Ice Cream', 2, 'ice-cream')
   ];
-  ProductAmount = [0,0];
+  ProductAmount = [0,0,0,0];
 
   constructor() { }
   
   @Output() enviar = new EventEmitter<number>()
+  @Output() enviarNombre = new EventEmitter<string>()
+
 
   EnviarNumeroProducto(num: number){
     this.enviar.emit(num)
+  }
+
+  EnviarNombreProducto(name: string){
+    this.enviarNombre.emit(name)
   }
 
   restarProducto(name: string, num: number){
@@ -28,7 +36,7 @@ export class ProductListComponent{
         this.products[i].amount -= num;
       }
     }
-    this.ProductAmount = [0,0];
+    this.ProductAmount = [0,0,0,0];
   }
 
 }
