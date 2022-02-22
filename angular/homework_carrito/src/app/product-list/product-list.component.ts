@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Products } from '../shared/products.model';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-product-list',
@@ -14,10 +15,8 @@ export class ProductListComponent{
     new Products('Ice Cream', 'Strawberry Ice Cream', 2, 'ice-cream')
   ];
   ProductAmount = [0,0,0,0];
-
-  constructor() { }
   
-  @Output() enviar = new EventEmitter<number>()
+  /*@Output() enviar = new EventEmitter<number>()
   @Output() enviarNombre = new EventEmitter<string>()
 
 
@@ -27,8 +26,7 @@ export class ProductListComponent{
 
   EnviarNombreProducto(name: string){
     this.enviarNombre.emit(name)
-  }
-
+  }*/
   restarProducto(name: string, num: number){
     let n = this.products.length;
     for(let i = 0; i < n; i++){
@@ -37,6 +35,16 @@ export class ProductListComponent{
       }
     }
     this.ProductAmount = [0,0,0,0];
+  }
+
+  constructor(private dataService: DataService) {}
+
+  EnviarNombreProducto(name: string) {
+      this.dataService.emitChange(name);
+  }
+
+  EnviarNumeroProducto(num: number){
+    this.dataService.emitChange(num)
   }
 
 }
