@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DataService } from '../data.service';
+import { Products } from '../shared/products.model';
 
 @Component({
   selector: 'app-product-info',
   templateUrl: './product-info.component.html',
-  styleUrls: ['./product-info.component.css']
+  styleUrls: ['./product-info.component.css'],
+  providers : [DataService]
 })
-export class ProductInfoComponent implements OnInit {
+export class ProductInfoComponent implements OnInit, OnDestroy{
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.dataService.productInformation$.subscribe(prod => {
+      console.log(prod);
+    });
+  }
+
+  ngOnDestroy(): void {
+      
   }
 
 }

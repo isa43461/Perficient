@@ -5,7 +5,7 @@
             <a class="list-group-item" 
             *ngFor="let product of products; let i = index"
             >{{product.name}} , "{{product.desc}}" , ({{product.amount}})
-            <a href="product-list/{{product.slug}}"><button class="btn btn-secondary" (click)="EnviarNombreProducto(product.name)">See Product Information</button></a>
+            <a href="product-list/{{product.slug}}"><button class="btn btn-secondary" (click)="enviarNombreProducto(product)">See Product Information</button></a>
             <hr>
             <p *ngIf="product.amount != 0">¿Do you want to add {{ProductAmount[i]}} of {{product.name}}?</p>
             <p *ngIf="product.amount == 0">OUT OF STOCK</p> 
@@ -13,7 +13,7 @@
                 <div class="input-group">
                     <input [(ngModel)]="ProductAmount[i]" type="number" class="form-control"  *ngIf="product.amount > ProductAmount[i]" placeholder="Ingrese la cantidad deseada de producto">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" *ngIf="(product.amount >= 1 && ProductAmount[i] >= 0) && ((product.amount - ProductAmount[i]) >= 0)" (click)="[EnviarNumeroProducto(ProductAmount[i]), restarProducto(product.name, ProductAmount[i])]">Add {{ProductAmount[i]}} Products</button>
+                        <button class="btn btn-primary" *ngIf="(product.amount >= 1 && ProductAmount[i] >= 0) && ((product.amount - ProductAmount[i]) >= 0)" (click)="[enviarNumeroProducto(ProductAmount[i]), restarProducto(product.name, ProductAmount[i])]">Add {{ProductAmount[i]}} Products</button>
                     </span>
                 </div>
             </div>

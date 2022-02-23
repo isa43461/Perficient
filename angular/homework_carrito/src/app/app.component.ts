@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DataService } from './data.service';
+import { Products } from './shared/products.model';
 
 @Component({
   selector: 'app-root',
@@ -7,21 +8,30 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.css'],
   providers : [DataService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy{
   title = 'homework_carrito';
-  productName = "";
   numeroCarrito = 0;
 
   constructor(private dataService: DataService) {}
 
+  private subProductNumber: any;
+  private subProductDesc: any;
+
   ngOnInit(){
-    this.dataService.changeEmitted$.subscribe(text => {
-      if(typeof(text) === 'number'){
-        this.numeroCarrito += text;
-      }
-      else{
-        alert(text);
-      }
+    this.subProductNumber =  this.dataService.totalProductsNumber$.subscribe(num => {
+            this.numeroCarrito += num;
     });
+    this.subProductDesc = this.dataService.currentProductInfo$.subscribe(text => {
+        this.EnviarProducto(text);
+    });
+  }
+
+  EnviarProducto(name: Products) {
+    this.dataService.emitChangeProductInfo(name);
+  }
+
+  ngOnDestroy(): void {
+    this.subProductNumber.unsubscribe();
+    //this.subProductDesc.unsubscribe();
   }
 }
