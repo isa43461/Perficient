@@ -5,7 +5,7 @@
             <a class="list-group-item" 
             *ngFor="let product of products; let i = index"
             >{{product.name}} , "{{product.desc}}" , ({{product.amount}})
-            <a href="product-list/{{product.slug}}"><button class="btn btn-secondary" (click)="enviarNombreProducto(product)">See Product Information</button></a>
+            <button class="btn btn-secondary" (click)="enviarNombreProducto(product)">See Product Information</button>
             <hr>
             <p *ngIf="product.amount != 0">¿Do you want to add {{ProductAmount[i]}} of {{product.name}}?</p>
             <p *ngIf="product.amount == 0">OUT OF STOCK</p> 

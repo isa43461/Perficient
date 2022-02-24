@@ -7,11 +7,8 @@ export {rutas};
 const rutas: Routes = [
     {
       path: '',
-      component: ProductListComponent
-    },
-    { 
-      path: 'product-list',
-      component: ProductListComponent
+      component: ProductListComponent,
+      pathMatch: 'full' 
     },
     {
       path: 'product-list/:slug',
@@ -20,11 +17,7 @@ const rutas: Routes = [
   ];
 
   @NgModule({
-    imports: [
-      RouterModule.forRoot(rutas)
-    ],
-    exports: [
-      RouterModule
-    ]
+    imports: [RouterModule.forRoot(rutas)],
+    exports: [RouterModule]
   })
   export class AppRoutingModule{}

@@ -1,1 +1,3 @@
-<p>Funciona</p>
+<div *ngIf="currentProd$ | async as product">
+    <pre>{{product | json}}}</pre>
+</div>

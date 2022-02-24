@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Products } from '../shared/products.model';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -26,14 +27,14 @@ export class ProductListComponent{
     this.ProductAmount = [0,0,0,0];
   }
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router : Router) {}
 
-  enviarNombreProducto(name: Products) {
-      this.dataService.emitChangeCurrentProductInfo(name);
+  enviarNombreProducto(prod: Products) {
+      this.dataService.emitChangeCurrentProductInfo(prod);
+      this.router.navigate(['/product-list', prod.slug]);
   }
 
   enviarNumeroProducto(num: number){
     this.dataService.emitChangeTotalProduct(num)
   }
-
 }
