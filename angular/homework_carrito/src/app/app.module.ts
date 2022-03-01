@@ -9,6 +9,7 @@ import { ProductInfoComponent } from './product-info/product-info.component'
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routes';
 import { DataService } from './data.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DataService } from './data.service';
     ProductListComponent,
     CarritoComponent,
     HeaderComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
