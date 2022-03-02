@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { pipe, of } from 'rxjs';
-import { filter, map} from 'rxjs/operators';
+import { from, fromEvent } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +13,8 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(){
-    const nums = of(1,2,3,4,5);
-
-    const alCuadrado = pipe(filter((n:number) => n%2 === 0), map(n => n*n));
-
-    const cuadrado = alCuadrado(nums);
-
-    cuadrado.subscribe(x => console.log(x));
+    const clicks = fromEvent(document, 'click');
+    const positions = clicks.pipe(tap(ev => console.log('Procesado' + ev)));
+    positions.subscribe(pos => console.log(pos))
   }
 }
