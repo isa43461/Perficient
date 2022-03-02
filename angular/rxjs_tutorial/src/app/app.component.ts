@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ajax } from 'rxjs/ajax';
-import { forkJoin } from 'rxjs';
+import { concatMap, delay } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +13,12 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(){
-    const src = forkJoin(
-      {
-        google: ajax.getJSON('https://api.github.com/users/google'),
-        microsoft: ajax.getJSON('https://api.github.com/users/microsoft'),
-        ctmil: ajax.getJSON('https://api.github.com/users/ctmil')
-      }
-    );
+    const source = of(2000, 1000, 3000);
 
-    src.subscribe(console.log)
+    const obsConMap = source.pipe(concatMap(v => of(`valor: ${v}`).pipe(delay(v))));
+
+    obsConMap.subscribe(v => console.log(v));
   }
+
+
 }
