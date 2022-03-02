@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { interval, fromEvent, merge, empty} from 'rxjs';
-import { switchMap, scan, takeWhile, startWith, mapTo } from 'rxjs/operators';
+import { delay, take} from 'rxjs/operators';
+import { forkJoin, of, interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,20 +13,12 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(){
-    const remainingLabel = document.getElementById('remaining');
-    const pauseButton = document.getElementById('pause');
-    const resumeButton = document.getElementById('resume');
+    const fork = forkJoin(
+      of('Hola'),
+      of('Mundo').pipe(delay(500)),
+      interval(1000).pipe(take(2))
+    );
 
-    const obsInterval = interval(1000).pipe(mapTo(-1));
-    const pause = fromEvent(pauseButton, 'click').pipe(mapTo(false));
-    const resume = fromEvent(resumeButton, 'click').pipe(mapTo(true));
-
-    const timer = merge(pause, resume).pipe(
-      startWith(true),
-      switchMap(val => (val ? obsInterval : empty())),
-      scan((acc,curr) => (curr ? curr + acc : acc), 10),
-      takeWhile(v => v >= 0)
-    )
-    .subscribe((val:any) => (remainingLabel.innerHTML = val))
+    fork.subscribe(val=> console.log(val))
   }
 }
