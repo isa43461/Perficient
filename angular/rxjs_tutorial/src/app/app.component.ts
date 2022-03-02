@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { interval, timer } from 'rxjs';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,12 @@ export class AppComponent {
   observable : any;
 
   ngOnInit(){
-    const contador = interval(1000);
-    
-    
-    contador.subscribe((n)=>{
-      console.log(`cada ${n} segundos`);
+    const el = document.getElementById('elemento');
+
+    const mouse = fromEvent(el,'mousemove');
+
+    mouse.subscribe((e: MouseEvent)=>{
+      console.log(`Coords: x: ${e.clientX}, y: ${e.clientY}`);
     });
   }
 }
