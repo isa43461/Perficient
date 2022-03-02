@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { interval, timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,24 +11,11 @@ export class AppComponent {
   observable : any;
 
   ngOnInit(){
-    this.observable = new Observable(subscriber => {
-      subscriber.next(1);
-      subscriber.next(2);
-      subscriber.next(3);
-      setTimeout(() => {
-        subscriber.next(4);
-        subscriber.complete();
-      }, 1000);
+    const contador = interval(1000);
+    
+    
+    contador.subscribe((n)=>{
+      console.log(`cada ${n} segundos`);
     });
-  }
-
-  rxjsFun(){
-    console.log('just before subscribe');
-    this.observable.subscribe({
-      next(x) { console.log('got value ' + x); },
-      error(err) { console.error('something wrong occurred: ' + err); },
-      complete() { console.log('done'); }
-    });
-    console.log('just after subscribe');
   }
 }
