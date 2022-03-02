@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { pipe, of } from 'rxjs';
+import { filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,16 @@ import { fromEvent } from 'rxjs';
 })
 export class AppComponent {
   title = 'rxjs_tutorial';
-  observable : any;
+
+  constructor(){}
 
   ngOnInit(){
-    const el = document.getElementById('elemento');
+    const nums = of(1,2,3,4,5);
 
-    const mouse = fromEvent(el,'mousemove');
+    const alCuadrado = pipe(filter((n:number) => n%2 === 0), map(n => n*n));
 
-    mouse.subscribe((e: MouseEvent)=>{
-      console.log(`Coords: x: ${e.clientX}, y: ${e.clientY}`);
-    });
+    const cuadrado = alCuadrado(nums);
+
+    cuadrado.subscribe(x => console.log(x));
   }
 }
