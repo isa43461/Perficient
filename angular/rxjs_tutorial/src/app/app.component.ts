@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { delay, take} from 'rxjs/operators';
-import { forkJoin, of, interval } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +13,14 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(){
-    const fork = forkJoin(
-      of('Hola'),
-      of('Mundo').pipe(delay(500)),
-      interval(1000).pipe(take(2))
+    const src = forkJoin(
+      {
+        google: ajax.getJSON('https://api.github.com/users/google'),
+        microsoft: ajax.getJSON('https://api.github.com/users/microsoft'),
+        ctmil: ajax.getJSON('https://api.github.com/users/ctmil')
+      }
     );
 
-    fork.subscribe(val=> console.log(val))
+    src.subscribe(console.log)
   }
 }
