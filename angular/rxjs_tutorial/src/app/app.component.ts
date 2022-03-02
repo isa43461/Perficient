@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { concat, interval, range } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { interval } from 'rxjs';
+import { bufferTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +13,10 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(){
-    const timer = interval(1000).pipe(take(4));
+    const timer = interval(500);
 
-    const rango = range(1,10);
+    const buffer = timer.pipe(bufferTime(2000, 1000));
 
-    const result = concat(timer,rango);
-
-    result.subscribe(x => console.log(x));
+    const subs = buffer.subscribe(val => console.log('Buffer:', val))
   }
 }
