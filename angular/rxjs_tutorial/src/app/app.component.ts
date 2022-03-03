@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { concatMap, delay } from 'rxjs/operators';
+import { mergeMap, delay } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Component({
@@ -15,10 +15,8 @@ export class AppComponent {
   ngOnInit(){
     const source = of(2000, 1000, 3000);
 
-    const obsConMap = source.pipe(concatMap(v => of(`valor: ${v}`).pipe(delay(v))));
+    const obsConMap = source.pipe(mergeMap(v => of(`valor: ${v}`).pipe(delay(v))));
 
     obsConMap.subscribe(v => console.log(v));
   }
-
-
 }
