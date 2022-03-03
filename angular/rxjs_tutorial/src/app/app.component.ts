@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { Subject, interval, ConnectableObservable } from 'rxjs';
-import { tap, multicast } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
 
 
 @Component({
@@ -8,23 +7,23 @@ import { tap, multicast } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'rxjs_tutorial';
 
   constructor(){}
 
   ngOnInit(){
     
-    const source = interval(3000).pipe(
-      tap((n) => console.log('ID: ' + n))
-    );
+    const obs = new ReplaySubject(4);
 
-    const multi = source.pipe(multicast(()=> new Subject<number>())) as ConnectableObservable<any>;
+    obs.next(1);
+    obs.next(2);
+    obs.next(3);
+    obs.subscribe(console.log);
 
-    multi.subscribe(v => console.log('localhost:4200/' + v));
-    multi.subscribe(v => console.log('localhost:4200/'+ (v-1)));
+    obs.next(4);
+    obs.next(5);
 
-    multi.connect();
-
+    obs.subscribe(console.log);
   }
 }
