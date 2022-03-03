@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { Observable, generate } from 'rxjs';
 import { map, debounceTime} from 'rxjs/operators';
 
 @Component({
@@ -13,11 +13,14 @@ export class AppComponent implements OnInit {
   constructor(){}
 
   ngOnInit(){
-    const search = document.getElementById('search')
-    const keyup$ = fromEvent(search, 'keyup');
-    
-    keyup$.pipe(
-      map((e:any) => e.currentTarget.value), debounceTime(1000)
-    ).subscribe(console.log);
+    const obs = new Observable((observer) => {
+      observer.next(1);
+      observer.next(2);
+      observer.next(3);
+      observer.next(4);
+      observer.next(5);
+    });
+
+    const sub = obs.subscribe(val => console.log(val));
   }
 }
