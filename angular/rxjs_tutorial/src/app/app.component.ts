@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { mergeMap } from 'rxjs/operators';
-import { forkJoin } from 'rxjs';
-import { ajax } from 'rxjs/ajax';
-import { ObsService } from './obs.service';
+import { scan, delay } from 'rxjs/operators';
+import { of } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -12,15 +11,11 @@ import { ObsService } from './obs.service';
 export class AppComponent {
   title = 'rxjs_tutorial';
 
-  constructor(public obs: ObsService){}
+  constructor(){}
 
   ngOnInit(){
-    forkJoin(
-      this.obs.getGithub('ctmil'),
-      this.obs.getGithub('odoo'),
-      this.obs.getGithub('angular')
-      ).subscribe((res) => {
-        console.log(res);
-      });
+    const src = of(1,2,3,4,5).pipe(delay(1000));
+    const scaan = src.pipe(scan((a,c) => [...a, c], []));
+    scaan.subscribe(val => console.log(val));
   }
 }
