@@ -13,11 +13,18 @@ export class AppComponent implements OnInit {
   constructor(){}
 
   ngOnInit(){
-    const subject = new BehaviorSubject(1);
+    const subject = new BehaviorSubject(0);
+    const click$ = fromEvent(document, 'click').pipe(
+      map((e: MouseEvent) => ({
+        x: e.clientX,
+        y: e.clientY
+      }))
+    );
 
-    subject.subscribe(console.log);
-    subject.next(2);
+    const interval$ = interval(1000).pipe(
+      tap(v => subject.next(v))
+    );
 
-    subject.subscribe(console.log)
+    merge(click$, interval$).subscribe(console.log)
   }
 }
