@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { mergeMap, delay } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
+import { ObsService } from './obs.service';
 
 @Component({
   selector: 'app-root',
@@ -11,16 +12,15 @@ import { ajax } from 'rxjs/ajax';
 export class AppComponent {
   title = 'rxjs_tutorial';
 
-  constructor(){}
+  constructor(public obs: ObsService){}
 
   ngOnInit(){
-    const source = of(
-      ajax.getJSON('https://api.github.com/users/ctmil'),
-      ajax.getJSON('https://api.github.com/users/ibuioli'),
-      );
-
-    const obsConMap = source.pipe(mergeMap(v => v));
-
-    obsConMap.subscribe(v => console.log(v));
+    forkJoin(
+      this.obs.getGithub('ctmil'),
+      this.obs.getGithub('odoo'),
+      this.obs.getGithub('angular')
+      ).subscribe((res) => {
+        console.log(res);
+      });
   }
 }
