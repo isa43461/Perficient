@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Subject, from, ConnectableObservable } from 'rxjs';
-import { multicast } from 'rxjs';
+import { Subject, interval, ConnectableObservable } from 'rxjs';
+import { tap, multicast } from 'rxjs';
 
 
 @Component({
@@ -14,16 +14,15 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(){
-    const source = from([1,2,3,4]);
+    
+    const source = interval(3000).pipe(
+      tap((n) => console.log('ID: ' + n))
+    );
+
     const multi = source.pipe(multicast(()=> new Subject<number>())) as ConnectableObservable<any>;
 
-    multi.subscribe({
-      next: (n) => console.log(`ObsA: ${n}`)
-    });
-
-    multi.subscribe({
-      next: (n) => console.log(`ObsB: ${n+1}`)
-    });
+    multi.subscribe(v => console.log('localhost:4200/' + v));
+    multi.subscribe(v => console.log('localhost:4200/'+ (v-1)));
 
     multi.connect();
 
