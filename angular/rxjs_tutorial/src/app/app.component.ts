@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { mergeMap, delay } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { ajax } from 'rxjs/ajax';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,12 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(){
-    const source = of(2000, 1000, 3000);
+    const source = of(
+      ajax.getJSON('https://api.github.com/users/ctmil'),
+      ajax.getJSON('https://api.github.com/users/ibuioli'),
+      );
 
-    const obsConMap = source.pipe(mergeMap(v => of(`valor: ${v}`).pipe(delay(v))));
+    const obsConMap = source.pipe(mergeMap(v => v));
 
     obsConMap.subscribe(v => console.log(v));
   }
