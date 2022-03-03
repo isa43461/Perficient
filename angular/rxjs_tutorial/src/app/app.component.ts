@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, fromEvent, interval, merge } from 'rxjs';
-import { map,tap} from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+import { map, debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +13,11 @@ export class AppComponent implements OnInit {
   constructor(){}
 
   ngOnInit(){
-    const subject = new BehaviorSubject(0);
-    const click$ = fromEvent(document, 'click').pipe(
-      map((e: MouseEvent) => ({
-        x: e.clientX,
-        y: e.clientY
-      }))
-    );
-
-    const interval$ = interval(1000).pipe(
-      tap(v => subject.next(v))
-    );
-
-    merge(click$, interval$).subscribe(console.log)
+    const search = document.getElementById('search')
+    const keyup$ = fromEvent(search, 'keyup');
+    
+    keyup$.pipe(
+      map((e:any) => e.currentTarget.value), debounceTime(1000)
+    ).subscribe(console.log);
   }
 }
