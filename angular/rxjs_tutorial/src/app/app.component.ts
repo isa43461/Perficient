@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { scan, delay } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -14,8 +13,17 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(){
-    const src = of(1,2,3,4,5).pipe(delay(1000));
-    const scaan = src.pipe(scan((a,c) => [...a, c], []));
-    scaan.subscribe(val => console.log(val));
+    const subject = new Subject<number>();
+    subject.subscribe({
+      next: (n) => console.log(`ObsA: ${n}`)
+    });
+
+    subject.subscribe({
+      next: (n) => console.log(`ObsB: ${n + 1}`)
+    });
+
+    subject.next(1);
+    subject.next(2);
+    subject.next(3);
   }
 }
