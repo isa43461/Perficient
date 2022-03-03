@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
-
+import { BehaviorSubject, fromEvent, interval, merge } from 'rxjs';
+import { map,tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +13,11 @@ export class AppComponent implements OnInit {
   constructor(){}
 
   ngOnInit(){
-    
-    const obs = new ReplaySubject(4);
+    const subject = new BehaviorSubject(1);
 
-    obs.next(1);
-    obs.next(2);
-    obs.next(3);
-    obs.subscribe(console.log);
+    subject.subscribe(console.log);
+    subject.next(2);
 
-    obs.next(4);
-    obs.next(5);
-
-    obs.subscribe(console.log);
+    subject.subscribe(console.log)
   }
 }
