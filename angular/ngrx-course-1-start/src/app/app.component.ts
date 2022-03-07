@@ -5,7 +5,7 @@ import {map} from 'rxjs/operators';
 import {NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router} from '@angular/router';
 import { AppState } from './auth/reducers';
 import { isLoggedIn, isLoggedOut } from './auth/auth.selectors';
-import { logoutt } from './auth/auth.actions';
+import { loginn, logoutt } from './auth/auth.actions';
 
 
 @Component({
@@ -26,6 +26,12 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+
+      const userProfile = localStorage.getItem('user');
+
+      if(userProfile){
+        this.store.dispatch(loginn({user: JSON.parse(userProfile)}));
+      }
 
       this.router.events.subscribe(event  => {
         switch (true) {
