@@ -10,6 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routes';
 import { DataService } from './data.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { carReducer } from './state/carrito_ngrx/carro.reducer';
+import { CarEffects } from './state/carrito_ngrx/carro.effects';
 
 @NgModule({
   declarations: [
@@ -24,7 +31,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({data: carReducer}),
+    StoreRouterConnectingModule.forRoot(),
+    EffectsModule.forRoot([CarEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
