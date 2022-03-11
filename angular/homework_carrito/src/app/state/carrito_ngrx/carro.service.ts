@@ -13,6 +13,6 @@ export class Data_Service{
   
     GetAPI(): Observable<any>{
       //try some HTTP request:
-      return this.http.get("https://jsonplaceholder.typicode.com/todos/1");
+      return this.http.get("https://jsonplaceholder.typicode.com/todos/1/");
     }
   }

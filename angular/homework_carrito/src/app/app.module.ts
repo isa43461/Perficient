@@ -32,7 +32,7 @@ import { CarEffects } from './state/carrito_ngrx/carro.effects';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    StoreModule.forRoot({data: carReducer}),
+    StoreModule.forRoot({cars: carReducer}),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([CarEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
