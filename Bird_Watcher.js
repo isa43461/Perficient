@@ -29,6 +29,15 @@ function birdsInWeek(A, num){
     }
     return ans
 }
+//Otra manera que encontre para resolver el ejercicio mas eficiente
+function birdsInWeek2(A, num){
+    let ans = 0;
+    let n = num*7;
+    for(let i = n-7; i < n ; i++){
+        ans += A[i]
+    }
+    return ans
+}
 
 function fixBirdCountLog(birdsPerDay){
     let n = birdsPerDay.length;
