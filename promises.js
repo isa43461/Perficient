@@ -7,6 +7,8 @@ let p4 =  99;
 let p5 = new Promise((resolve, reject) => {
   reject("reject");
 });;
+let p6 = new Promise((resolve) => setTimeout(() => resolve(69), 6800));
+let p7 = new Promise((resolve) => setTimeout(() => resolve(736), 1000));
 
 function allPromise(prom){
     return new Promise(async (resolve, reject) => {
@@ -53,6 +55,15 @@ function allSettlePromise(prom){
 }
 
 allSettlePromise([p1, p2, p4, p3]).then((ej) => console.log(ej));
+
+function racePromise(prom){
+    return new Promise((resolve, reject) => {
+        if(prom.length === 0) return resolve(prom);
+        else prom.forEach(item => item.then(vl => resolve(vl)));
+    })
+}
+
+racePromise([p2, p7, p6]).then((e) => console.log(e));
 
 function anyPromise(prom){
     return new Promise(async (resolve, reject) => {
