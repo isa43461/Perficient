@@ -1,5 +1,5 @@
 let p1 = Promise.resolve(33);
-let p2 = new Promise((resolve) => setTimeout(() => resolve(66), 0));
+let p2 = new Promise((resolve) => setTimeout(() => resolve(66), 2000));
 let p3 = new Promise((resolve, reject) => {
   reject("reject");
 });
