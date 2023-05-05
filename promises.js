@@ -4,7 +4,9 @@ let p3 = new Promise((resolve, reject) => {
   reject("reject");
 });
 let p4 =  99; 
-let p5;
+let p5 = new Promise((resolve, reject) => {
+  reject("reject");
+});;
 
 function allPromise(prom){
     return new Promise(async (resolve, reject) => {
@@ -51,3 +53,31 @@ function allSettlePromise(prom){
 }
 
 allSettlePromise([p1, p2, p4, p3]).then((ej) => console.log(ej));
+
+function anyPromise(prom){
+    return new Promise(async (resolve, reject) => {
+        n = prom.length;
+        j = 0;
+        errors = [];
+        if(n === 0){
+            return resolve(prom)
+        }
+        else{
+            for(let i = 0; i < n; i++){
+                try{
+                    const val = await prom[i];
+                    resolve(val)
+                } catch(error){
+                    if(n !== j){
+                        j += 1;
+                        errors.push(error);
+                    }
+                }
+            }
+            if(n === j){
+                reject(new AggregateError([new Error(errors)], ""));
+            }
+        }
+    })
+}
+anyPromise([p3,p5, p2]).then((ej) => console.log(ej)).catch((error) => console.log(error));
