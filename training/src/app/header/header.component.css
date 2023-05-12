@@ -1,0 +1,50 @@
+.navbar.navbar-expand-lg{
+    border-bottom: solid 2px;
+    color:hsl(223, 64%, 98%);
+    margin-top: 10px;
+}
+
+.navbar-toggler{
+    border: 0px;
+}
+
+.nav-link{
+    font-size: 16px;
+}
+
+.logo{
+    vertical-align: top;
+}
+
+@media (min-width: 993px){
+    .dropdown{
+        padding: 15px;
+    }
+    li:hover{
+        text-decoration: solid 4px underline;
+        color:  hsl(26, 100%, 55%);
+        text-underline-offset: 35px;
+    }    
+}
+
+@media (min-width: 576px) and (max-width: 992px){
+    .dropdown{
+        padding: 10px;
+    }
+}
+
+@media (max-width: 577px){
+    .dropdown{
+        padding: 5px;
+    }
+}
+
+
+#user{
+    width: 42px;
+    height: 40px;
+
+}
+#navbarDropdownUser{
+    padding-top: 0px;
+}

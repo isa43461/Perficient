@@ -1,0 +1,114 @@
+input {
+    text-align: center;  
+    border: 1px solid hsl(223, 64%, 98%);
+    display: flex;
+  } 
+  
+  .counter {
+    border: 2px hsl(223, 64%, 98%) solid;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    border-radius: 15px;
+    background-color: hsl(223, 64%, 98%);
+  }
+
+  .cart{
+    border: 2px hsl(223, 64%, 98%) solid;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    border-radius: 15px;
+    background-color: hsl(26, 100%, 55%);
+    margin-top: 2%;
+    justify-content: center;
+    color:hsl(223, 64%, 98%)
+  }
+  
+  .plusminus {
+    height: 100%;
+    width: 30%;
+    background-color: hsl(223, 64%, 98%);
+    border: none;
+    font-size: 20px;
+    color:hsl(26, 100%, 55%);
+    display: grid;
+    align-content: center;
+  }
+  
+  .form-control {
+    height: 100%;
+    width: 40%;
+    border: none;
+    font-size: 20px;
+    background-color: hsl(223, 64%, 98%);
+  }
+
+  .title{
+    display: flex;
+    align-items: center;
+  }
+
+  .price{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .finalPrice {
+    font-size: 22px;
+    margin-left: auto;
+  }
+
+  .oldPrice{
+    margin-left: 30%;
+    color: hsl(220, 14%, 75%);
+    text-decoration: line-through;
+  }
+
+      
+  .discount{
+    border: 3px hsl(25, 100%, 94%) solid;
+    border-radius: 10px;
+    background-color:hsl(25, 100%, 94%);
+    margin-left: 10px;
+    color:hsl(26, 100%, 55%);
+  }
+
+@media (min-width: 993px){
+    .counter {
+        border: 2px hsl(223, 64%, 98%) solid;
+        width: 80%;
+        height: 50px;
+        padding: 10px;
+        display: flex;
+        border-radius: 15px;
+        align-items: center;
+        margin-left: auto;
+        margin-top: 10%;
+        justify-content: center;
+      }
+    .cart{
+        border: 2px hsl(223, 64%, 98%) solid;
+        width: 80%;
+        height: 50px;
+        padding: 10px;
+        display: flex;
+        border-radius: 15px;
+        align-items: center;
+        margin-left: auto;
+        margin-top: 3%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 992px){
+    .oldPrice{
+        margin-left: auto;
+    }
+    .finalPrice{
+        margin-left: 0%;
+    }
+}

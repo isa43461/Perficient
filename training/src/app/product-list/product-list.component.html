@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="product-items">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of products; let i = index">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="image col-lg-2">
+                            <img class="img-fluid" [src]= 'item.src' >
+                        </div>
+                        <div class="title col-lg-4">
+                            <h4>{{item.name}}</h4>
+                        </div>
+                        <div class="price col-lg-2">
+                            <p *ngIf="item.discount == 0" class="finalPrice">{{item.price | currency: 'USD' :true:'1.2-2'}}</p>
+                            <p *ngIf="item.discount != 0" class="finalPrice" >{{(item.price - (item.price * item.discount)) | currency: 'USD' :true:'1.2-2'}}</p>
+                            <p *ngIf="item.discount != 0" class="discount">{{item.discount * 100}}%</p>
+                            <p *ngIf="item.discount != 0" class="oldPrice">{{item.price | currency: 'USD' :true:'1.2-2'}}</p>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="counter">
+                                <button class="plusminus" (click) = "minus(i)">-</button>
+                                <input [(ngModel)]="shoppingCart[i]" type="number" class="form-control" placeholder="0" disabled>
+                                <button class="plusminus" (click) = "plus(i)">+</button>
+                            </div>
+                            <div>
+                                <button class="cart" (click)="addToCart(item, shoppingCart[i])"> Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
