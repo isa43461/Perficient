@@ -14,20 +14,4 @@ export class ProductListComponent {
 
   shoppingCart = new Array(this.products.length).fill(0)
 
-  //constructor(private router: Router){}
-
-  minus(i: number){
-      if(this.shoppingCart[i] !== 0) this.shoppingCart[i] -= 1;
-  }
-
-  plus(i: number){
-    if(this.products[i].amount > this.shoppingCart[i]){
-      this.shoppingCart[i] += 1;
-    } 
-  }
-
-  addToCart(item, amount){
-    let finalPrice = (item.price - (item.price * item.discount)) * amount;
-    console.log(item, amount, finalPrice);
-  }
 }

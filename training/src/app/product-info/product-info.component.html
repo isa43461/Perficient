@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="image col-lg-3">
+        <img class="img-fluid" [src]= 'item.src' >
+    </div>
+    <div class="title col-lg-6">
+        <h4>{{item.name}}</h4>
+    </div>
+    <div class="price col-lg-3">
+        <p *ngIf="item.discount == 0" class="finalPrice">{{item.price | currency: 'USD' :true:'1.2-2'}}</p>
+        <p *ngIf="item.discount != 0" class="finalPrice" >{{(item.price - (item.price * item.discount)) | currency: 'USD' :true:'1.2-2'}}</p>
+        <p *ngIf="item.discount != 0" class="discount">{{item.discount * 100}}%</p>
+        <p *ngIf="item.discount != 0" class="oldPrice">{{item.price | currency: 'USD' :true:'1.2-2'}}</p>
+    </div>
+</div>

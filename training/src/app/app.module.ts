@@ -6,12 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { AddProductButtonComponent } from './add-product-button/add-product-button.component';
+import { ProductInfoComponent } from './product-info/product-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ProductListComponent
+    ProductListComponent,
+    AddProductButtonComponent,
+    ProductInfoComponent
   ],
   imports: [
     BrowserModule,
