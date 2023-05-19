@@ -16,7 +16,7 @@ export class AddProductButtonComponent {
   }
 
   plus(){
-    if(this.item.price > this.cart) this.cart += 1;
+    if(this.item.amount > this.cart) this.cart += 1;
   }
 
   addToCart(amount : number){
