@@ -8,18 +8,15 @@ import { Products } from '../shared/products.model';
 })
 export class AddProductButtonComponent {
   @Input() item : Products;
-  @Input() i: number;
-  @Input() shoppingCart: number[];
+  @Input() cart: number;
   @Output() productCart = new EventEmitter<string>();
 
-  minus(i: number){
-      if(this.shoppingCart[i] !== 0) this.shoppingCart[i] -= 1;
+  minus(){
+    if(this.cart !== 0) this.cart -= 1;
   }
 
-  plus(i: number, item: Products){
-    if(item.price > this.shoppingCart[i]){
-      this.shoppingCart[i] += 1;
-    }
+  plus(){
+    if(this.item.price > this.cart) this.cart += 1;
   }
 
   addToCart(amount : number){

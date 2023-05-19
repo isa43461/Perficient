@@ -1,8 +1,8 @@
 <div class="counter">
-    <button class="plusminus" (click) = "minus(i)">-</button>
-    <input [(ngModel)]="shoppingCart[i]" type="number" class="form-control" placeholder="0" disabled>
-    <button class="plusminus" (click) = "plus(i, item)">+</button>
+    <button class="plusminus" (click) = "minus()">-</button>
+    <input [(ngModel)]="cart" type="number" class="form-control" placeholder="0" disabled>
+    <button class="plusminus" (click) = "plus()">+</button>
 </div>
 <div>
-    <button class="cart" (click)="addToCart(shoppingCart[i])"> Add To Cart</button>
+    <button class="cart" (click)="addToCart(cart)"> Add To Cart</button>
 </div>
