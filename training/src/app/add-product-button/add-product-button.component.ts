@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Products } from '../shared/products.model';
 
 @Component({
@@ -9,21 +9,20 @@ import { Products } from '../shared/products.model';
 export class AddProductButtonComponent {
   @Input() item : Products;
   @Input() i: number;
-  @Input() shoppingCart: any[];
-  @Input() products: Products[];
+  @Input() shoppingCart: number[];
+  @Output() productCart = new EventEmitter<string>();
 
   minus(i: number){
       if(this.shoppingCart[i] !== 0) this.shoppingCart[i] -= 1;
   }
 
-  plus(i: number){
-    if(this.products[i].amount > this.shoppingCart[i]){
+  plus(i: number, item: Products){
+    if(item.price > this.shoppingCart[i]){
       this.shoppingCart[i] += 1;
     }
   }
 
-  addToCart(item, amount){
-    let finalPrice = (item.price - (item.price * item.discount)) * amount;
-    console.log(item, amount, finalPrice);
+  addToCart(amount : number){
+    this.productCart.emit(amount.toString());
   }
 }

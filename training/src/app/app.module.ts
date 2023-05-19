@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { AddProductButtonComponent } from './add-product-button/add-product-button.component';
 import { ProductInfoComponent } from './product-info/product-info.component';
+import { DiscountCalculationPipe } from './shared/pipes/discount-calculation.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProductInfoComponent } from './product-info/product-info.component';
     HeaderComponent,
     ProductListComponent,
     AddProductButtonComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    DiscountCalculationPipe
   ],
   imports: [
     BrowserModule,

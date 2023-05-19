@@ -7,8 +7,10 @@
     </div>
     <div class="price col-lg-3">
         <p *ngIf="item.discount == 0" class="finalPrice">{{item.price | currency: 'USD' :true:'1.2-2'}}</p>
-        <p *ngIf="item.discount != 0" class="finalPrice" >{{(item.price - (item.price * item.discount)) | currency: 'USD' :true:'1.2-2'}}</p>
-        <p *ngIf="item.discount != 0" class="discount">{{item.discount * 100}}%</p>
-        <p *ngIf="item.discount != 0" class="oldPrice">{{item.price | currency: 'USD' :true:'1.2-2'}}</p>
+        <ng-container *ngIf="item.discount != 0">
+            <p class="finalPrice" >{{ item | discountCalculation | currency: 'USD' :true:'1.2-2'}}</p>
+            <p class="discount">{{item.discount * 100}}%</p>
+            <p class="oldPrice">{{item.price | currency: 'USD' :true:'1.2-2'}}</p>
+        </ng-container>
     </div>
 </div>
