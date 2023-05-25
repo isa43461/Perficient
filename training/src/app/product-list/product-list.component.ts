@@ -15,7 +15,6 @@ export class ProductListComponent {
 
   addToCart(amount : string, item: Products){
     let finalPrice = (item.price - (item.price * item.discount)) * +amount;
-    console.log(item, amount, finalPrice); 
   }
 
 }
