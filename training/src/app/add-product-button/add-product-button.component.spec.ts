@@ -4,7 +4,7 @@ import { Products } from '../shared/products.model';
 
 import { AddProductButtonComponent } from './add-product-button.component';
 
-fdescribe('AddProductButtonComponent', () => {
+describe('AddProductButtonComponent', () => {
   let component: AddProductButtonComponent;
   let fixture: ComponentFixture<AddProductButtonComponent>;
   const item: Products = new Products('Fall Limited Edition Sneakers', 'assets/image-product-1.jpg', 10, 'shoes', 'These low blabla', 220.00 , 0.5);
@@ -42,8 +42,19 @@ fdescribe('AddProductButtonComponent', () => {
     decrementButton.click();
     const input = fixture.debugElement.nativeElement.querySelector('.form-control');
     fixture.detectChanges();
-    console.log(input.getAttribute("ng-reflect-model"), cart)
+
     expect(input.getAttribute("ng-reflect-model")).toBe('3');
   });
 
+  it('should emit on click', () => {
+    spyOn(component.productCart, 'emit');
+
+    const addToCartButton = fixture.debugElement.nativeElement.querySelector('.cart')
+    addToCartButton.click();
+    fixture.detectChanges();
+
+    expect(component.productCart.emit).toHaveBeenCalledWith(cart.toString());
+
+
+  })
 });

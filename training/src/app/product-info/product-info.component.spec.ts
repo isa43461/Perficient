@@ -38,7 +38,7 @@ describe('ProductInfoComponent', () => {
   });
   
   it('should show when the item has the discount', () => {
-    item.discount = 0.5;
+    component.item.discount = 0.5;
     fixture.detectChanges();
     const price = fixture.debugElement.nativeElement.querySelector('.finalPrice')
     const dsc = fixture.debugElement.nativeElement.querySelector('.discount')
@@ -50,7 +50,7 @@ describe('ProductInfoComponent', () => {
   });
 
   it('should show when the item does not have discount', () => {
-    item.discount = 0;
+    component.item.discount = 0;
     fixture.detectChanges();
     const price = fixture.debugElement.nativeElement.querySelector('.finalPrice')
     expect(price.innerHTML).toBe('$220.00');
