@@ -9,6 +9,11 @@ import { AddProductButtonComponent } from './add-product-button/add-product-butt
 import { ProductInfoComponent } from './product-info/product-info.component';
 import { DiscountCalculationPipe } from './shared/pipes/discount-calculation.pipe';
 
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { listReducer } from './state/ngrx/reducers/list.reducers';
+import { listEffects } from './state/ngrx/effects/list.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +27,8 @@ import { DiscountCalculationPipe } from './shared/pipes/discount-calculation.pip
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    StoreModule.forRoot({list: listReducer}),
+    EffectsModule.forRoot([listEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
