@@ -1,7 +1,7 @@
 <div class="container">
     <div class="product-items">
         <ul class="list-group">
-            <li class="list-group-item" *ngFor="let item of products; let i = index">
+            <li class="list-group-item" *ngFor="let item of products | async ; let i = index">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-8">

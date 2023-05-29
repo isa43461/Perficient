@@ -1,18 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Products } from '../shared/products.model';
-import { listService } from '../state/ngrx/services/list.services';
+import { load_productList } from '../state/ngrx/actions/list.actions';
+import { selectAllItems } from '../state/ngrx/selectors/list.selectors';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
-  constructor(private listService: listService){}
+export class ProductListComponent implements OnInit{
+  constructor(private store: Store){}
 
-  products = this.listService.GetProductList();
+  ngOnInit(){
+    this.store.dispatch(load_productList());
+    this.products.subscribe(item => {
+      this.productos = item;
+      this.shoppingCart = new Array(this.productos.length).fill(0);
+    });
+  }
 
-  shoppingCart = new Array().fill(0);
+  productos = [];
+  shoppingCart = [];
+  products = this.store.select(selectAllItems);
 
   addToCart(amount : string, item: Products){
     let finalPrice = (item.price - (item.price * item.discount)) * +amount;
