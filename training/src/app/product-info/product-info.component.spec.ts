@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { DataService } from '../data.service';
 import { DiscountCalculationPipe } from '../shared/pipes/discount-calculation.pipe';
 import { Products } from '../shared/products.model';
 import { ProductInfoComponent } from './product-info.component';
@@ -7,7 +8,7 @@ import { ProductInfoComponent } from './product-info.component';
 describe('ProductInfoComponent', () => {
   let component: ProductInfoComponent;
   let fixture: ComponentFixture<ProductInfoComponent>;
-  const item: Products = new Products('Fall Limited Edition Sneakers', 'assets/image-product-1.jpg', 10, 'shoes', 'These low blabla', 220.00 , 0.5);
+  const item: Products = new Products('Fall Limited Edition Sneakers', ['assets/image-product-1.jpg'], 10, 'shoes', 'These low blabla', 220.00 , 0.5);
   
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -15,6 +16,7 @@ describe('ProductInfoComponent', () => {
         ProductInfoComponent, 
         DiscountCalculationPipe
       ],
+      providers: [DataService]
     });
     fixture = TestBed.createComponent(ProductInfoComponent);
     component = fixture.componentInstance;

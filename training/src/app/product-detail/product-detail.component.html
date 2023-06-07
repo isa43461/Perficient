@@ -1,0 +1,30 @@
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="image col-lg-5">
+            <img class="img-fluid" [src]= 'imgSource' >
+            <img class="mini-images" [src]='product.src[0]' (click)="getImageSrc(product.src[0])">
+            <img class="mini-images" [src]='product.src[1]' (click)="getImageSrc(product.src[1])">
+        </div>
+        <div class="col-lg-6">
+            <div class="title">
+                <h1>{{product.name}}</h1>
+            </div>
+            <div class="description">
+                <blockquote>{{product.desc}}</blockquote>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 price">
+                    <p *ngIf="product.discount == 0" class="finalPrice">{{product.price | currency: 'USD' :true:'1.2-2'}}</p>
+                    <ng-container *ngIf="product.discount != 0">
+                        <p class="finalPrice" >{{ product | discountCalculation | currency: 'USD' :true:'1.2-2'}}</p>
+                        <p class="discount">{{product.discount * 100}}%</p>
+                        <p class="oldPrice">{{product.price | currency: 'USD' :true:'1.2-2'}}</p>
+                    </ng-container>
+                </div>
+                <div class="col-lg-6">
+                    <app-add-product-button [item] = 'product' [cart]='cart' (productCart)="addToCart($event, product)"></app-add-product-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

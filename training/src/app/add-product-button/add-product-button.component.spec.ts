@@ -7,7 +7,7 @@ import { AddProductButtonComponent } from './add-product-button.component';
 describe('AddProductButtonComponent', () => {
   let component: AddProductButtonComponent;
   let fixture: ComponentFixture<AddProductButtonComponent>;
-  const item: Products = new Products('Fall Limited Edition Sneakers', 'assets/image-product-1.jpg', 10, 'shoes', 'These low blabla', 220.00 , 0.5);
+  const item: Products = new Products('Fall Limited Edition Sneakers', ['assets/image-product-1.jpg'], 10, 'shoes', 'These low blabla', 220.00 , 0.5);
   let cart: number = 0;
 
   beforeEach(() => {

@@ -8,11 +8,12 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { AddProductButtonComponent } from './add-product-button/add-product-button.component';
 import { ProductInfoComponent } from './product-info/product-info.component';
 import { DiscountCalculationPipe } from './shared/pipes/discount-calculation.pipe';
-
+import { DataService } from './data.service';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { listReducer } from './state/ngrx/reducers/list.reducers';
 import { listEffects } from './state/ngrx/effects/list.effects';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { listEffects } from './state/ngrx/effects/list.effects';
     ProductListComponent,
     AddProductButtonComponent,
     ProductInfoComponent,
-    DiscountCalculationPipe
+    DiscountCalculationPipe,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

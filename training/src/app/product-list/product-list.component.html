@@ -4,10 +4,10 @@
             <li class="list-group-item" *ngFor="let item of products | async ; let i = index">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-8">
-                            <app-product-info [item] = 'item'></app-product-info>
+                        <div class="col-lg-9">
+                            <app-product-info [item] = 'item' [cart] = 'shoppingCart[i]'></app-product-info>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <app-add-product-button (productCart)="addToCart($event, item)" [cart] = 'shoppingCart[i]' [item] = 'item'></app-add-product-button>
                         </div>
                     </div>

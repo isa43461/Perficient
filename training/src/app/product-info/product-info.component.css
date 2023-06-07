@@ -1,7 +1,7 @@
-    .title{
-        display: flex;
-        align-items: center;
-    }
+  .title{
+      display: flex;
+      align-items: center;
+  }
 
   .finalPrice {
     font-size: 22px;
@@ -9,7 +9,7 @@
   }
 
   .oldPrice{
-    margin-left: 30%;
+    margin-left: 20%;
     color: hsl(220, 14%, 75%);
     text-decoration: line-through;
   }
@@ -35,4 +35,8 @@
     .finalPrice{
         margin-left: 0%;
     }
-}
+  }
+
+  .img-fluid{
+    border-radius: 15px;
+  }
