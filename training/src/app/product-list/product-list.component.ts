@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit{
 
   ngOnInit(){
     this.store.dispatch(load_productList());
+    this.products = this.store.select(selectAllItems);
     this.products.subscribe(item => {
       this.productos = item;
       this.shoppingCart = new Array(this.productos.length).fill(0);
@@ -23,7 +24,7 @@ export class ProductListComponent implements OnInit{
 
   productos = [];
   shoppingCart = [];
-  products = this.store.select(selectAllItems);
+  products;
 
   addToCart(amount : string, item: Products){
     this.dataService.addProductToCart(item, +amount);

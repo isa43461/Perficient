@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable, switchMap, tap } from 'rxjs';
 import { DataService } from '../data.service';
 import { Products } from '../shared/products.model';
+import { selectProductDetail } from '../state/ngrx/selectors/list.selectors';
 import { ListService } from '../state/ngrx/services/list.services';
 
 @Component({
@@ -11,7 +13,8 @@ import { ListService } from '../state/ngrx/services/list.services';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit{
-  constructor(private dataService: DataService, private route: ActivatedRoute, private listService: ListService) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute,
+     private router: Router , private store: Store , /*private listService: ListService*/) { }
 
   currentAmount$ = new Observable<number>();
   currentProd$ = new Observable<Products>();
@@ -21,24 +24,37 @@ export class ProductDetailComponent implements OnInit{
   cart: number;
 
   ngOnInit(){
-    this.currentProd$ = this.dataService.currentProductInfo$;
+    this.currentProd$ = this.route.params.pipe(
+      switchMap(params => {
+         return this.store.select(selectProductDetail({ slug: params.slug }))
+      }))
+    this.currentProd$.subscribe(prod => {
+      if(prod){
+        this.product = prod;
+        this.imgSource = prod.src[0];
+      } else{
+        this.router.navigateByUrl('/')
+      }
+    }) 
+    
+    /*this.currentProd$ = this.dataService.currentProductInfo$;
     this.currentProd$.subscribe(item => {
       if(!item){
-        this.route.params.subscribe(params => {
+       this.route.params.subscribe(params => {
           this.listService.GetProductList().subscribe(array => {
             array.forEach(prod => {
               if(prod.slug === params.slug) this.product = prod;
             })
           })
-        });
+        }); 
       } else{
         this.product = item
       }
     });
-
+    this.imgSource = this.product.src[0];
+    */
     this.currentAmount$ = this.dataService.currentProductAmount$;
     this.currentAmount$.subscribe(num => this.cart = num);
-    this.imgSource = this.product.src[0];
     this.totalPrice = 0;
   }
 

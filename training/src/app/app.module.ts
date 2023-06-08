@@ -32,7 +32,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     StoreModule.forRoot({list: listReducer}),
     EffectsModule.forRoot([listEffects])
   ],
-  providers: [],
+  providers: [DataService, DiscountCalculationPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

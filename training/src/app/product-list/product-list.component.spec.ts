@@ -4,25 +4,24 @@ import { ProductListComponent } from './product-list.component';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 import { load_productList } from '../state/ngrx/actions/list.actions';
 import { Products } from '../shared/products.model';
+import { DataService } from '../data.service';
 import { of } from 'rxjs';
-import { selectAllItems } from '../state/ngrx/selectors/list.selectors';
 
 describe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
   let store: MockStore;
-  const initialState = {data: []};
-
+  const initialState = {data: [] , error: null, loading: false};
+  const dataServiceSpy = jasmine.createSpyObj<DataService>('DataService', ['addProductToCart']);
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        ProductListComponent,
-      ],
+      declarations: [ProductListComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [provideMockStore({initialState})]
+      providers: [provideMockStore({initialState}), {provide: DataService, useValue: dataServiceSpy}]
     });
     fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
+    //dataService = new DataService();
     store = TestBed.inject(MockStore);
     fixture.detectChanges();
   });
@@ -33,18 +32,30 @@ describe('ProductListComponent', () => {
   
   it('should dispatch product list', () => {
     spyOn(store, 'dispatch');
+    spyOn(store, 'select').and.returnValue(
+      of([
+        new Products('Fall Limited Edition Sneakers', ['assets/image-product-1.jpg'], 10, 'shoes', 'These low blabla', 220.00 , 0.5)])
+    );
     component.ngOnInit();
     expect(store.dispatch).toHaveBeenCalledWith(load_productList());
   });
 
-  /*
-  fit('should show the product list', () => {
-    selectAllItems.projector({data: [new Products('Fall Limited Edition Sneakers', ['assets/image-product-1.jpg'], 10, 'shoes', 'These low blabla', 220.00 , 0.5)], error: null, loading: false});
+  
+  it('should show the product list', () => {
+    spyOn(store, 'select').and.returnValue(
+      of([
+        new Products('Fall Limited Edition Sneakers', ['assets/image-product-1.jpg'], 10, 'shoes', 'These low blabla', 220.00 , 0.5)])
+    )
     component.ngOnInit();
     fixture.detectChanges();
     const listGroup  = fixture.debugElement.nativeElement.querySelectorAll('.list-group-item');
-    console.log(listGroup)
     expect(listGroup.length).toBe(1);
-  }); */
+  });
 
-});
+  it('should add to cart', () => {
+    const item: Products = new Products('Fall Limited Edition Sneakers', ['assets/image-product-1.jpg'], 10, 'shoes', 'These low blabla', 220.00 , 0.5);
+    component.addToCart('1', item);
+    expect(dataServiceSpy.addProductToCart).toHaveBeenCalledWith(item, +'1');
+  })
+
+})

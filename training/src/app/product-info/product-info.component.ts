@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Products } from '../shared/products.model';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { load_productList } from '../state/ngrx/actions/list.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-product-info',
@@ -11,12 +13,10 @@ import { DataService } from '../data.service';
 export class ProductInfoComponent {
   @Input() item: Products;
   @Input() cart: number;
-  //@Input() index: number;
 
-  constructor(private router: Router, private dataService: DataService){}
+  constructor(private router: Router, private dataService: DataService, private store: Store){}
 
   productDetail(){
-    this.dataService.emitChangeCurrentProductInfo(this.item);
     this.dataService.emitChangeCurrentProductAmount(this.cart);
     this.router.navigate(['/product-detail', this.item.slug]);
   }

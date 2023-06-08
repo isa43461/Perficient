@@ -45,13 +45,15 @@
                         <div class="total-price" >Subtotal: {{finalPrice | currency: 'USD' :true:'1.2-2'}}</div>
                         <div class="dropdown-divider"></div>
                     </ng-container >
-                    <li *ngIf="(currentShoppingCart$ | async).length === 0">
+                    <li *ngIf="(currentShoppingCart$ | async).length === 0; else checkoutBtn">
                         <p class="empty">The shopping cart is empty, please add a product!</p>
                     </li>
-                    <div *ngIf="(currentShoppingCart$ | async).length !== 0" class="btn-cart">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn cart" data-bs-toggle="modal" data-bs-target="#exampleModal">Checkout</button>
-                    </div>                    
+                    <ng-template #checkoutBtn>
+                        <div class="btn-cart">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn cart" data-bs-toggle="modal" data-bs-target="#exampleModal">Checkout</button>
+                        </div>  
+                    </ng-template>                  
                 </div>
             </div>
             <!-- Modal -->

@@ -6,7 +6,7 @@ import { Products } from '../products.model';
 })
 export class DiscountCalculationPipe implements PipeTransform {
 
-  transform(item: Products, ...args: unknown[]): unknown {
+  transform(item: Products, ...args: unknown[]): number {
     return item.price - (item.price * item.discount);
   }
 

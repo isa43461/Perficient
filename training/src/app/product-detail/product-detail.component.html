@@ -1,5 +1,5 @@
 <div class="container py-5">
-    <div class="row align-items-center">
+    <div class="row align-items-center" *ngIf="currentProd$|async">
         <div class="image col-lg-5">
             <img class="img-fluid" [src]= 'imgSource' >
             <img class="mini-images" [src]='product.src[0]' (click)="getImageSrc(product.src[0])">

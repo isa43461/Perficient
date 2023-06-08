@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DataService } from '../data.service';
+import { DiscountCalculationPipe } from '../shared/pipes/discount-calculation.pipe';
 
 import { HeaderComponent } from './header.component';
 
@@ -8,7 +10,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
+      declarations: [HeaderComponent, DiscountCalculationPipe],
+      providers: [DataService, DiscountCalculationPipe],
+
     });
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
