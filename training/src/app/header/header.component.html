@@ -35,7 +35,7 @@
                             <img class="dropdown-img col-lg-4" [src]="shoppingCart.item.src[0]">
                             <div class="dropdown-info col-lg-8">
                                 <p class="dropdown-title">{{shoppingCart.item.name}}</p>
-                                <p>{{ shoppingCart.item | discountCalculation | currency: 'USD' :true:'1.2-2'}} x {{shoppingCart.amount}} = <b>{{shoppingCart.total | currency: 'USD' :true:'1.2-2'}}</b> </p>
+                                <p class="dropdown-prices">{{ shoppingCart.item | discountCalculation | currency: 'USD' :true:'1.2-2'}} x {{shoppingCart.amount}} = {{shoppingCart.total | currency: 'USD' :true:'1.2-2'}}</p>
                                 <a class="delete-item" (click)="deleteItem(shoppingCart)">Delete</a>
                             </div>            
                         </a>

@@ -37,22 +37,6 @@ export class ProductDetailComponent implements OnInit{
       }
     }) 
     
-    /*this.currentProd$ = this.dataService.currentProductInfo$;
-    this.currentProd$.subscribe(item => {
-      if(!item){
-       this.route.params.subscribe(params => {
-          this.listService.GetProductList().subscribe(array => {
-            array.forEach(prod => {
-              if(prod.slug === params.slug) this.product = prod;
-            })
-          })
-        }); 
-      } else{
-        this.product = item
-      }
-    });
-    this.imgSource = this.product.src[0];
-    */
     this.currentAmount$ = this.dataService.currentProductAmount$;
     this.currentAmount$.subscribe(num => this.cart = num);
     this.totalPrice = 0;
