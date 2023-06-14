@@ -14,7 +14,7 @@ import { ListService } from '../state/ngrx/services/list.services';
 })
 export class ProductDetailComponent implements OnInit{
   constructor(private dataService: DataService, private route: ActivatedRoute,
-     private router: Router , private store: Store , /*private listService: ListService*/) { }
+     private router: Router , private store: Store) { }
 
   currentAmount$ = new Observable<number>();
   currentProd$ = new Observable<Products>();

@@ -21,7 +21,6 @@ describe('ProductListComponent', () => {
     });
     fixture = TestBed.createComponent(ProductListComponent);
     component = fixture.componentInstance;
-    //dataService = new DataService();
     store = TestBed.inject(MockStore);
     fixture.detectChanges();
   });
