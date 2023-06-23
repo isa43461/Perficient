@@ -8,6 +8,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Products } from '../shared/products.model';
 import { BehaviorSubject, of, switchMap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { selectAllItems, selectLoading } from '../state/ngrx/selectors/list.selectors';
 
 describe('ProductDetailComponent', () => {
   let component: ProductDetailComponent;
@@ -25,7 +26,11 @@ describe('ProductDetailComponent', () => {
       declarations: [ProductDetailComponent, DiscountCalculationPipe],
       imports: [RouterTestingModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [DataService, DiscountCalculationPipe, provideMockStore({initialState}),
+      providers: [DataService, DiscountCalculationPipe,
+                provideMockStore({initialState, selectors: [
+                  {selector: selectLoading, value: initialState.loading},
+                  {selector: selectAllItems, value: initialState.data}
+                ]}),
                 {provide: DataService, useValue: dataServiceSpy},
                 {provide: ActivatedRoute, useValue: activatedRouteMock}],
     });

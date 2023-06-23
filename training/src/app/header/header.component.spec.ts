@@ -33,10 +33,12 @@ describe('HeaderComponent', () => {
 
   it('should get current total price and shopping Cart', () => {
     price.next(110.00);
-    cart.next([{item: item, amount: 1, total: 110.00}]);
     component.ngOnInit();
+    cart.next([{item: item, amount: 1, total: 110.00}]);
     component.currentTotal$.subscribe(num => expect(num).toBe(110.00));
-    component.currentShoppingCart$.subscribe(ct => expect(ct).toEqual([{item: item, amount: 1, total: 110.00}]));
+    let result;
+    component.currentShoppingCart$.subscribe(ct => result = ct);
+    expect(result).toEqual([{item: item, amount: 1, total: 110.00}])
   })
 
   it('should work the function delete item', () => {
