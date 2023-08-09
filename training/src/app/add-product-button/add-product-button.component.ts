@@ -9,7 +9,7 @@ import { Products } from '../shared/products.model';
 export class AddProductButtonComponent {
   @Input() item : Products;
   @Input() cart: number;
-  @Output() productCart = new EventEmitter<string>();
+  @Output() productCart = new EventEmitter<number>();
 
   minus(){
     if(this.cart !== 0) this.cart -= 1;
@@ -20,6 +20,6 @@ export class AddProductButtonComponent {
   }
 
   addToCart(amount : number){
-    this.productCart.emit(amount.toString());
+    this.productCart.emit(amount);
   }
 }

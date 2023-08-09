@@ -53,7 +53,7 @@ describe('AddProductButtonComponent', () => {
     addToCartButton.click();
     fixture.detectChanges();
 
-    expect(component.productCart.emit).toHaveBeenCalledWith(cart.toString());
+    expect(component.productCart.emit).toHaveBeenCalledWith(cart);
 
 
   })

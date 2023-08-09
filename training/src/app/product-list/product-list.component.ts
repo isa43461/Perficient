@@ -27,8 +27,8 @@ export class ProductListComponent implements OnInit{
   shoppingCart = [];
   products;
 
-  addToCart(amount : string, item: Products){
-    this.dataService.addProductToCart(item, +amount);
+  addToCart(amount : number, item: Products){
+    this.dataService.addProductToCart(item, amount);
   }
 
 }

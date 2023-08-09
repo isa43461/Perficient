@@ -46,7 +46,7 @@ export class ProductDetailComponent implements OnInit{
     this.imgSource = src;
   }
 
-  addToCart(amount : string, item: Products){
-    this.dataService.addProductToCart(item, +amount);
+  addToCart(amount : number, item: Products){
+    this.dataService.addProductToCart(item, amount);
   }
 }
