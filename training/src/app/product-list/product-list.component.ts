@@ -20,6 +20,7 @@ export class ProductListComponent implements OnInit{
       this.productos = item;
       this.shoppingCart = new Array(this.productos.length).fill(0);
     });
+
   }
 
   productos = [];

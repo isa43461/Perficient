@@ -19,24 +19,17 @@ export class DataService {
       return current + value.total;
     }, 0)))
   }
-  private currentProductInfo = new BehaviorSubject<Products>(null);
-  private currentProductAmount = new BehaviorSubject<number>(0);
-  //private currentTotalPrice = new BehaviorSubject<number>(0);
 
   //Observable cart items
   private currentProductsCart = new BehaviorSubject<ShoppingCart[]>([])
+  private currentProductAmount = new BehaviorSubject<number>(0);
 
   // Observable string streams
-  currentProductInfo$ = this.currentProductInfo.asObservable();
   currentProductAmount$ = this.currentProductAmount.asObservable();
   currentProductsCart$ = this.currentProductsCart.asObservable();
   currentTotalPrice$;
 
   // Service message commands
-  emitChangeCurrentProductInfo(info: any) {
-      this.currentProductInfo.next(info);
-  }
-
   emitChangeCurrentProductAmount(amount: number){
     this.currentProductAmount.next(amount);
   }
