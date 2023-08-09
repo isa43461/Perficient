@@ -53,8 +53,8 @@ describe('ProductListComponent', () => {
 
   it('should add to cart', () => {
     const item: Products = new Products('Fall Limited Edition Sneakers', ['assets/image-product-1.jpg'], 10, 'shoes', 'These low blabla', 220.00 , 0.5);
-    component.addToCart('1', item);
-    expect(dataServiceSpy.addProductToCart).toHaveBeenCalledWith(item, +'1');
+    component.addToCart(1, item);
+    expect(dataServiceSpy.addProductToCart).toHaveBeenCalledWith(item, 1);
   })
 
 })
